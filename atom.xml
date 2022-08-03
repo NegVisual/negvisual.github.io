@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://negvisual.github.io</id>
+    <id>http://negvisual.github.io</id>
     <title>Gridea</title>
-    <updated>2022-08-03T07:10:54.871Z</updated>
+    <updated>2022-08-03T08:35:25.037Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://negvisual.github.io"/>
-    <link rel="self" href="https://negvisual.github.io/atom.xml"/>
+    <link rel="alternate" href="http://negvisual.github.io"/>
+    <link rel="self" href="http://negvisual.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>https://negvisual.github.io/images/avatar.png</logo>
-    <icon>https://negvisual.github.io/favicon.ico</icon>
+    <logo>http://negvisual.github.io/images/avatar.png</logo>
+    <icon>http://negvisual.github.io/favicon.ico</icon>
     <rights>All rights reserved 2022, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[记一次https的抓包]]></title>
-        <id>https://negvisual.github.io/post/test/</id>
-        <link href="https://negvisual.github.io/post/test/">
+        <id>http://negvisual.github.io/post/test/</id>
+        <link href="http://negvisual.github.io/post/test/">
         </link>
         <updated>2022-08-01T05:25:53.000Z</updated>
         <summary type="html"><![CDATA[<p>🌌使用wireshark 抓取https报文</p>
@@ -32,16 +32,17 @@
 <p>此次过程中会涉及到TCP , SSH/TLS和HTTP 等主要协议。</p>
 <h1 id="2-三次握手">2. 三次握手</h1>
 <p>http 协议是TCP的上层协议。client在与server端建立http通信的之前，必须先建立TCP连接以确保客户端、服务端双发收发包能力的正常。<br>
-<img src="https://negvisual.github.io/post-images/1659510445231.webp" alt="三次握手报文" loading="lazy"><br>
----|---</p>
+<img src="http://negvisual.github.io/post-images/1659514814362.jpg#pic_right" alt="rsds" loading="lazy"><br>
+<img src="http://negvisual.github.io/post-images/1659515717547.webp" alt="sas" loading="lazy"></p>
 <h1 id="3-tls-握手">3. TLS 握手</h1>
+<p>asas</p>
 <h1 id="4-发送加密的http报文">4. 发送加密的http报文</h1>
 ]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://negvisual.github.io/post/hello-gridea/</id>
-        <link href="https://negvisual.github.io/post/hello-gridea/">
+        <id>http://negvisual.github.io/post/hello-gridea/</id>
+        <link href="http://negvisual.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
