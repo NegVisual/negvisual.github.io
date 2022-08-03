@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://negvisual.github.io</id>
     <title>Gridea</title>
-    <updated>2022-08-01T07:12:15.298Z</updated>
+    <updated>2022-08-03T04:00:11.506Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://negvisual.github.io"/>
     <link rel="self" href="https://negvisual.github.io/atom.xml"/>
@@ -16,7 +16,38 @@
         <link href="https://negvisual.github.io/post/test/">
         </link>
         <updated>2022-08-01T05:25:53.000Z</updated>
-        <content type="html"><![CDATA[<p>sasa</p>
+        <summary type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#1-%E5%87%86%E5%A4%87">1. 准备</a></li>
+<li><a href="#2-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B">2. 三次握手</a></li>
+</ul>
+</p>
+<h1 id="1-准备">1. 准备</h1>
+<pre><code>    本次采用postman 发送Get方法获取github.com的首页信息。使用wireshark抓取网络报文，观察在这个过程中，postman进程与github服务器之间的收发包细节。
+    此次过程中会涉及到TCP , SSH/TLS和HTTP 等主要协议。
+</code></pre>
+<h1 id="2-三次握手">2. 三次握手</h1>
+<pre><code>    http 协议是TCP的上层协议。client在与server端建立http通信的之前，必须先建立TCP连接以确保客户端、服务端双发收发包能力的正常。
+    ![](https://negvisual.github.io/post-images/1659498850946.webp)
+</code></pre>
+]]></summary>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#1-%E5%87%86%E5%A4%87">1. 准备</a></li>
+<li><a href="#2-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B">2. 三次握手</a></li>
+<li><a href="#3-tls-%E6%8F%A1%E6%89%8B">3. TLS 握手</a></li>
+<li><a href="#4-%E5%8F%91%E9%80%81%E5%8A%A0%E5%AF%86%E7%9A%84http%E6%8A%A5%E6%96%87">4. 发送加密的http报文</a></li>
+</ul>
+</p>
+<h1 id="1-准备">1. 准备</h1>
+<pre><code>    本次采用postman 发送Get方法获取github.com的首页信息。使用wireshark抓取网络报文，观察在这个过程中，postman进程与github服务器之间的收发包细节。
+    此次过程中会涉及到TCP , SSH/TLS和HTTP 等主要协议。
+</code></pre>
+<h1 id="2-三次握手">2. 三次握手</h1>
+<pre><code>    http 协议是TCP的上层协议。client在与server端建立http通信的之前，必须先建立TCP连接以确保客户端、服务端双发收发包能力的正常。
+    ![](https://negvisual.github.io/post-images/1659498850946.webp)
+</code></pre>
+<!-- more -->
+<h1 id="3-tls-握手">3. TLS 握手</h1>
+<h1 id="4-发送加密的http报文">4. 发送加密的http报文</h1>
 ]]></content>
     </entry>
     <entry>

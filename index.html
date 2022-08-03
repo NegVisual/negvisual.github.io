@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gridea</title>
-<link rel="shortcut icon" href="https://negvisual.github.io/favicon.ico?v=1659337932361">
+<link rel="shortcut icon" href="https://negvisual.github.io/favicon.ico?v=1659499202872">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://negvisual.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Gridea - Atom Feed" href="https://negvisual.github.io/atom.xml">
@@ -18,7 +18,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://negvisual.github.io">
-  <img class="avatar" src="https://negvisual.github.io/images/avatar.png?v=1659337932361" alt="">
+  <img class="avatar" src="https://negvisual.github.io/images/avatar.png?v=1659499202872" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -89,7 +89,20 @@
         </a>
       
       <div class="post-abstract">
-        
+        <p><ul class="markdownIt-TOC">
+<li><a href="#1-%E5%87%86%E5%A4%87">1. 准备</a></li>
+<li><a href="#2-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B">2. 三次握手</a></li>
+</ul>
+</p>
+<h1 id="1-准备">1. 准备</h1>
+<pre><code>    本次采用postman 发送Get方法获取github.com的首页信息。使用wireshark抓取网络报文，观察在这个过程中，postman进程与github服务器之间的收发包细节。
+    此次过程中会涉及到TCP , SSH/TLS和HTTP 等主要协议。
+</code></pre>
+<h1 id="2-三次握手">2. 三次握手</h1>
+<pre><code>    http 协议是TCP的上层协议。client在与server端建立http通信的之前，必须先建立TCP连接以确保客户端、服务端双发收发包能力的正常。
+    ![](https://negvisual.github.io/post-images/1659498850946.webp)
+</code></pre>
+
       </div>
     </article>
   
