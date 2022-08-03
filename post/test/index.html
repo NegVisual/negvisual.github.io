@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>记一次https的抓包 | Gridea</title>
-<link rel="shortcut icon" href="https://negvisual.github.io/favicon.ico?v=1659499202872">
+<link rel="shortcut icon" href="https://negvisual.github.io/favicon.ico?v=1659499949820">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://negvisual.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="记一次https的抓包 | Gridea - Atom Feed" href="https://negvisual.github.io/atom.xml">
@@ -19,7 +19,7 @@
 
 
 1. 准备
-    本次采用postman 发送Get方法获取github.com的首页信息。使用wireshark抓取网络报文，观察在这个过程中，post..." />
+本次采用postman 发送Get方法获取github.com的首页信息。使用wireshark抓取网络报文，观察在这个过程中，postman进..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -29,7 +29,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://negvisual.github.io">
-  <img class="avatar" src="https://negvisual.github.io/images/avatar.png?v=1659499202872" alt="">
+  <img class="avatar" src="https://negvisual.github.io/images/avatar.png?v=1659499949820" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -106,13 +106,11 @@
 </ul>
 </p>
 <h1 id="1-准备">1. 准备</h1>
-<pre><code>    本次采用postman 发送Get方法获取github.com的首页信息。使用wireshark抓取网络报文，观察在这个过程中，postman进程与github服务器之间的收发包细节。
-    此次过程中会涉及到TCP , SSH/TLS和HTTP 等主要协议。
-</code></pre>
+<p>本次采用postman 发送Get方法获取github.com的首页信息。使用wireshark抓取网络报文，观察在这个过程中，postman进程与github服务器之间的收发包细节。</p>
+<p>此次过程中会涉及到TCP , SSH/TLS和HTTP 等主要协议。</p>
 <h1 id="2-三次握手">2. 三次握手</h1>
-<pre><code>    http 协议是TCP的上层协议。client在与server端建立http通信的之前，必须先建立TCP连接以确保客户端、服务端双发收发包能力的正常。
-    ![](https://negvisual.github.io/post-images/1659498850946.webp)
-</code></pre>
+<p>http 协议是TCP的上层协议。client在与server端建立http通信的之前，必须先建立TCP连接以确保客户端、服务端双发收发包能力的正常。<br>
+<img src="https://negvisual.github.io/post-images/1659498850946.webp" alt="" loading="lazy"></p>
 <!-- more -->
 <h1 id="3-tls-握手">3. TLS 握手</h1>
 <h1 id="4-发送加密的http报文">4. 发送加密的http报文</h1>
