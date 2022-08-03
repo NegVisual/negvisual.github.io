@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>记一次https的抓包 | Gridea</title>
-<link rel="shortcut icon" href="https://negvisual.github.io/favicon.ico?v=1659500289802">
+<link rel="shortcut icon" href="https://negvisual.github.io/favicon.ico?v=1659500582335">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://negvisual.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="记一次https的抓包 | Gridea - Atom Feed" href="https://negvisual.github.io/atom.xml">
@@ -11,7 +11,9 @@
 
 
 
-    <meta name="description" content="
+    <meta name="description" content="🌌使用wireshark 抓取https报文
+
+
 1. 准备
 2. 三次握手
 3. TLS 握手
@@ -19,7 +21,7 @@
 
 
 1. 准备
-本次采用postman 发送Get方法获取github.com的首页信息。使用wireshark抓取网络报文，观察在这个过程中，postman进..." />
+本次采用postman 发送Get方法获取github.com的首页信息。使用wireshar..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -29,7 +31,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://negvisual.github.io">
-  <img class="avatar" src="https://negvisual.github.io/images/avatar.png?v=1659500289802" alt="">
+  <img class="avatar" src="https://negvisual.github.io/images/avatar.png?v=1659500582335" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -98,7 +100,9 @@
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p><ul class="markdownIt-TOC">
+                <p>🌌使用wireshark 抓取https报文</p>
+<!-- more -->
+<p><ul class="markdownIt-TOC">
 <li><a href="#1-%E5%87%86%E5%A4%87">1. 准备</a></li>
 <li><a href="#2-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B">2. 三次握手</a></li>
 <li><a href="#3-tls-%E6%8F%A1%E6%89%8B">3. TLS 握手</a></li>
