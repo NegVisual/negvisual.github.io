@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://negvisual.github.io</id>
     <title>Gridea</title>
-    <updated>2022-08-07T07:35:43.992Z</updated>
+    <updated>2022-08-07T07:38:38.939Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://negvisual.github.io"/>
     <link rel="self" href="http://negvisual.github.io/atom.xml"/>
@@ -32,6 +32,7 @@
 <p>此次过程中会涉及到TCP , SSH/TLS和HTTP 等主要协议。</p>
 <h1 id="2-三次握手">2. 三次握手</h1>
 <p>http 协议是TCP的上层协议。client在与server端建立http通信的之前，必须先建立TCP连接以确保客户端、服务端双发收发包能力的正常。<br>
+<img src="http://negvisual.github.io/post-images/1659514814362.jpg" alt="" loading="lazy"><br>
 <img src="http://negvisual.github.io/post-images/1659515717547.webp" alt="" loading="lazy"></p>
 <h1 id="3-tls-握手">3. TLS 握手</h1>
 <p>asas</p>
