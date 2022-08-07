@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>记一次https的抓包 | Gridea</title>
-<link rel="shortcut icon" href="http://negvisual.github.io/favicon.ico?v=1659857917332">
+<link rel="shortcut icon" href="http://negvisual.github.io/favicon.ico?v=1659874824220">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="http://negvisual.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="记一次https的抓包 | Gridea - Atom Feed" href="http://negvisual.github.io/atom.xml">
@@ -17,11 +17,16 @@
 1. 准备
 2. 三次握手
 3. TLS 握手
+
+3.1 client hello
+3.2 server hello
+
+
 4. 发送加密的http报文
 
 
 1. 准备
-本次采用postman 发送Get方法获取github.com的首页信息。使用wireshar..." />
+本次采用postma..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -31,7 +36,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="http://negvisual.github.io">
-  <img class="avatar" src="http://negvisual.github.io/images/avatar.png?v=1659857917332" alt="">
+  <img class="avatar" src="http://negvisual.github.io/images/avatar.png?v=1659874824220" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -91,7 +96,7 @@
                 2022-08-01
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
               
             </div>
@@ -105,7 +110,12 @@
 <p><ul class="markdownIt-TOC">
 <li><a href="#1-%E5%87%86%E5%A4%87">1. 准备</a></li>
 <li><a href="#2-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B">2. 三次握手</a></li>
-<li><a href="#3-tls-%E6%8F%A1%E6%89%8B">3. TLS 握手</a></li>
+<li><a href="#3-tls-%E6%8F%A1%E6%89%8B">3. TLS 握手</a>
+<ul>
+<li><a href="#31-client-hello">3.1 client hello</a></li>
+<li><a href="#32-server-hello">3.2 server hello</a></li>
+</ul>
+</li>
 <li><a href="#4-%E5%8F%91%E9%80%81%E5%8A%A0%E5%AF%86%E7%9A%84http%E6%8A%A5%E6%96%87">4. 发送加密的http报文</a></li>
 </ul>
 </p>
@@ -117,7 +127,20 @@
 <img src="http://negvisual.github.io/post-images/1659514814362.jpg" alt="" loading="lazy"><br>
 <img src="http://negvisual.github.io/post-images/1659515717547.webp" alt="" loading="lazy"></p>
 <h1 id="3-tls-握手">3. TLS 握手</h1>
-<p>asas</p>
+<h2 id="31-client-hello">3.1 client hello</h2>
+<p>下面是ClientHello的报文内容：主要提供了以下信息</p>
+<ul>
+<li>version: 表示TLS版本号为1.2</li>
+<li>Random: 客户端产生的随机数，用于构成后续的对称密钥</li>
+<li>Cipher Suites: 密码套件，用来与server端协商散列算法、非对称密钥算法、以及密钥交换算法等等</li>
+</ul>
+<h2 id="32-server-hello">3.2 server hello</h2>
+<p>下面是ServerHello报文内容：主要提供了以下信息</p>
+<ul>
+<li>Random: 服务端产生的随机数，用于构成后续的对称密钥</li>
+<li>Cipher Suites: 密码套件，用于确定最终协商确定的加密协议算法，这里密码套件是：TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>
+<img src="http://negvisual.github.io/post-images/1659869284806.jpg" alt="" loading="lazy"></li>
+</ul>
 <h1 id="4-发送加密的http报文">4. 发送加密的http报文</h1>
 
               </div>
@@ -125,7 +148,12 @@
                 <ul class="markdownIt-TOC">
 <li><a href="#1-%E5%87%86%E5%A4%87">1. 准备</a></li>
 <li><a href="#2-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B">2. 三次握手</a></li>
-<li><a href="#3-tls-%E6%8F%A1%E6%89%8B">3. TLS 握手</a></li>
+<li><a href="#3-tls-%E6%8F%A1%E6%89%8B">3. TLS 握手</a>
+<ul>
+<li><a href="#31-client-hello">3.1 client hello</a></li>
+<li><a href="#32-server-hello">3.2 server hello</a></li>
+</ul>
+</li>
 <li><a href="#4-%E5%8F%91%E9%80%81%E5%8A%A0%E5%AF%86%E7%9A%84http%E6%8A%A5%E6%96%87">4. 发送加密的http报文</a></li>
 </ul>
 

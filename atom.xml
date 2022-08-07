@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://negvisual.github.io</id>
     <title>Gridea</title>
-    <updated>2022-08-07T07:38:38.939Z</updated>
+    <updated>2022-08-07T12:20:31.413Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://negvisual.github.io"/>
     <link rel="self" href="http://negvisual.github.io/atom.xml"/>
@@ -23,7 +23,12 @@
 <p><ul class="markdownIt-TOC">
 <li><a href="#1-%E5%87%86%E5%A4%87">1. 准备</a></li>
 <li><a href="#2-%E4%B8%89%E6%AC%A1%E6%8F%A1%E6%89%8B">2. 三次握手</a></li>
-<li><a href="#3-tls-%E6%8F%A1%E6%89%8B">3. TLS 握手</a></li>
+<li><a href="#3-tls-%E6%8F%A1%E6%89%8B">3. TLS 握手</a>
+<ul>
+<li><a href="#31-client-hello">3.1 client hello</a></li>
+<li><a href="#32-server-hello">3.2 server hello</a></li>
+</ul>
+</li>
 <li><a href="#4-%E5%8F%91%E9%80%81%E5%8A%A0%E5%AF%86%E7%9A%84http%E6%8A%A5%E6%96%87">4. 发送加密的http报文</a></li>
 </ul>
 </p>
@@ -35,7 +40,20 @@
 <img src="http://negvisual.github.io/post-images/1659514814362.jpg" alt="" loading="lazy"><br>
 <img src="http://negvisual.github.io/post-images/1659515717547.webp" alt="" loading="lazy"></p>
 <h1 id="3-tls-握手">3. TLS 握手</h1>
-<p>asas</p>
+<h2 id="31-client-hello">3.1 client hello</h2>
+<p>下面是ClientHello的报文内容：主要提供了以下信息</p>
+<ul>
+<li>version: 表示TLS版本号为1.2</li>
+<li>Random: 客户端产生的随机数，用于构成后续的对称密钥</li>
+<li>Cipher Suites: 密码套件，用来与server端协商散列算法、非对称密钥算法、以及密钥交换算法等等</li>
+</ul>
+<h2 id="32-server-hello">3.2 server hello</h2>
+<p>下面是ServerHello报文内容：主要提供了以下信息</p>
+<ul>
+<li>Random: 服务端产生的随机数，用于构成后续的对称密钥</li>
+<li>Cipher Suites: 密码套件，用于确定最终协商确定的加密协议算法，这里密码套件是：TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>
+<img src="http://negvisual.github.io/post-images/1659869284806.jpg" alt="" loading="lazy"></li>
+</ul>
 <h1 id="4-发送加密的http报文">4. 发送加密的http报文</h1>
 ]]></content>
     </entry>
