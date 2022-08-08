@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://negvisual.github.io</id>
     <title>Gridea</title>
-    <updated>2022-08-07T12:20:31.413Z</updated>
+    <updated>2022-08-08T07:06:59.130Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="http://negvisual.github.io"/>
     <link rel="self" href="http://negvisual.github.io/atom.xml"/>
@@ -27,6 +27,10 @@
 <ul>
 <li><a href="#31-client-hello">3.1 client hello</a></li>
 <li><a href="#32-server-hello">3.2 server hello</a></li>
+<li><a href="#33-certificate">3.3 Certificate</a></li>
+<li><a href="#34-server-key-exchange">3.4 Server key exchange</a></li>
+<li><a href="#35-server-hello-done">3.5 Server Hello Done</a></li>
+<li><a href="#36-client-key-exchange">3.6 Client Key exchange</a></li>
 </ul>
 </li>
 <li><a href="#4-%E5%8F%91%E9%80%81%E5%8A%A0%E5%AF%86%E7%9A%84http%E6%8A%A5%E6%96%87">4. 发送加密的http报文</a></li>
@@ -46,6 +50,7 @@
 <li>version: 表示TLS版本号为1.2</li>
 <li>Random: 客户端产生的随机数，用于构成后续的对称密钥</li>
 <li>Cipher Suites: 密码套件，用来与server端协商散列算法、非对称密钥算法、以及密钥交换算法等等</li>
+<li>Compress method: 压缩方法</li>
 </ul>
 <h2 id="32-server-hello">3.2 server hello</h2>
 <p>下面是ServerHello报文内容：主要提供了以下信息</p>
@@ -54,6 +59,44 @@
 <li>Cipher Suites: 密码套件，用于确定最终协商确定的加密协议算法，这里密码套件是：TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256<br>
 <img src="http://negvisual.github.io/post-images/1659869284806.jpg" alt="" loading="lazy"></li>
 </ul>
+<h2 id="33-certificate">3.3 Certificate</h2>
+<p>证书验证，服务器将包含有域名，公钥等信息的证书给客户端验证以表明身份。<br>
+证书主要包括以下部分：</p>
+<ul>
+<li>encryptd：签名，首先对证书使用hash算法进行散列，然后基于CA机构的私钥加密之后得到。</li>
+<li>subjectPublickey: 服务器的公钥</li>
+<li>algorithmIdentifier：签名算法</li>
+<li>issuer: 证书颁布机构<br>
+证书签名过程：首先对证书内容进行hash得到固定长度的摘要，然后CA机构使用私钥对摘要进行加密得到签名<br>
+证书验证过程：浏览器获取到CA的公钥，使用公钥对签名进行解密拿到digest1，然后对证书主题进行hash得到digest2,比对digest1和digest2即可。<br>
+<img src="http://negvisual.github.io/post-images/1659877271874.jpg" alt="" loading="lazy"></li>
+</ul>
+<h2 id="34-server-key-exchange">3.4 Server key exchange</h2>
+<pre><code>The server key exchange message is sent by the server if it has no
+certificate, has a certificate only used for signing (e.g., DSS [DSS]
+certificates, signing-only RSA [RSA] certificates), or FORTEZZA KEA
+key exchange is used.  This message is not used if the server
+certificate contains Diffie-Hellman [DH1] parameters.
+</code></pre>
+<p>由rfc6101文档可以知道，server key exchange 不是所有的tls加密协议都需要这一步。本次握手使用的ECDHE算法。在ECDHE中，服务器生成一个 “椭圆曲线的公钥” Server Params，对应公式中的A，使用私钥加密后将其发送给客户端；客户端也生成一个“椭圆曲线的公钥” Client Params，对应公式中的B，使用服务器的公钥加密后发给服务器；而私钥 a 和 b 由服务器和客户端分别保管。</p>
+<blockquote>
+<p>在客户端上： A ^ b mod P = Server Params ^ b mod P = pre-master<br>
+在服务器上： B ^ a mod P = Client Params ^ a mod P = pre-master<br>
+报文主要包含以下：</p>
+</blockquote>
+<ul>
+<li>curve type: 椭圆曲线类型</li>
+<li>Name Curve: 蒙哥马利曲线，包含曲线上的基点 G信息。</li>
+<li>PubKey: 服务端产生的随机数字， 然后与G点作点乘产生</li>
+<li>Signature：服务器私钥对PubKey进行签名<br>
+<img src="http://negvisual.github.io/post-images/1659887226413.jpg" alt="" loading="lazy"></li>
+</ul>
+<h2 id="35-server-hello-done">3.5 Server Hello Done</h2>
+<p>服务端的server hello环节需要发送的消息结束,表示服务端已客户端已经初步建立了密钥交换的渠道,服务端会等待客户端的下一步操作。<br>
+<img src="http://negvisual.github.io/post-images/1659888334796.jpg" alt="" loading="lazy"></p>
+<h2 id="36-client-key-exchange">3.6 Client Key exchange</h2>
+<p>客户端根据Server key exchange 确定的椭圆曲线参数，在此之上产生随机数，两者作点乘得到另一个数据，经过客户端私钥进行加密，得到Pubkey。在服务端上或者客户端上，使用ECDHE算法就可以计算出预主密钥pre-master-key。pre-master和Server Hello以及Client Hello中的random构成主密钥master-key。<br>
+<img src="http://negvisual.github.io/post-images/1659888415923.jpg" alt="" loading="lazy"></p>
 <h1 id="4-发送加密的http报文">4. 发送加密的http报文</h1>
 ]]></content>
     </entry>
